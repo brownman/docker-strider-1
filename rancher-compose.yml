@@ -1,6 +1,4 @@
-mongo:
-  scale: 1
-postfix:
-   scale: 1
-strider:
-  scale: 1
+test:
+  scale: 2
+test-data:
+  scale: 2
