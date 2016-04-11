@@ -1,0 +1,11 @@
+.catalog:
+  name: "strider-test"
+  version: "1.0-rancher1"
+  description: "testing with rancher"
+  uuid: strider-apps-0
+mongo:
+  scale: 1
+postfix:
+   scale: 1
+strider:
+  scale: 1
