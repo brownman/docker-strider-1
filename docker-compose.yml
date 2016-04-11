@@ -1,28 +1,14 @@
-mongo:
-    container_name: "strider_mongo"
-    build: "./mongo"
-    volumes:
-        - ./mongo_data:/data/db
-
-postfix:
-    container_name: "strider_postfix"
-    build: './postfix'
-    environment:
-        maildomain: mail.example.com
-        smtp_user: user:pwd
-
-strider:
-    container_name: "strider"
-    build: "./strider"
-    links:
-        - "mongo"
-        - "postfix"
-    environment:
-        DB_URI: mongodb://strider_mongo:27017/strider_test
-        SERVER_NAME: http://localhost:3000
-        SMTP_HOST: strider_postfix
-        SMTP_PORT: 25
-        SMTP_USER: user
-        SMTP_PASS: pwd
-    ports:
-        - "3000:3000"
+test:
+  tty: true
+  image: ubuntu:14.04.2
+  stdin_open: true
+  volumes_from:
+  - test-data
+  labels:
+    io.rancher.sidekicks: test-data
+test-data:
+  tty: true
+  command:
+  - cat
+  image: ubuntu:14.04.2
+  stdin_open: true
